@@ -56,31 +56,32 @@ public class PathNodeListenerAutoConfiguration {
 	@Bean
 	public Optional<Void> pathNodeDataConsumer(ApplicationContext applicationContext, Executor zkAsyncExecutor) {
 		Map<String, ZookeeperProperties.PathNodeListenerProperties> pathNodeListener = zookeeperProperties.getPathNodeListener();
-		if (!CollectionUtils.isEmpty(pathNodeListener)) {
-			pathNodeListener.forEach((k, v) -> {
-				try {
-					boolean enable = v.isEnable();
-					String pathNode = v.getPathNode();
-					if (enable && StringUtils.isNotBlank(pathNode)) {
-						PathNodeDataConsumer pathNodeDataConsumer = applicationContext.getBean(k, PathNodeDataConsumer.class);
-						Arrays.stream(pathNode.split(",", -1)).forEach(node -> {
-							try {
-								String nodePath = node.startsWith("/") ? node : "/" + node;
-								//配置节点的监听类
-								TreeCache treeCache = new TreeCache(curatorFramework, nodePath);
-								treeCache.getListenable().addListener(new ZkPathTreeCacheListenerListener(pathNodeDataConsumer), zkAsyncExecutor);
-								treeCache.start();
-								log.debug("zk PathNodeDataConsumer Bean :{} listen the path:{}", pathNodeDataConsumer, node);
-							} catch (Exception e) {
-								log.error("exception, key:{}", k, e);
-							}
-						});
-					}
-				} catch (Exception e) {
-					log.error("绑定zk节点和监听bean出错,beanName:{}", k, e);
-				}
-			});
+		if (CollectionUtils.isEmpty(pathNodeListener)) {
+			return Optional.empty();
 		}
+		pathNodeListener.forEach((k, v) -> {
+			try {
+				boolean enable = v.isEnable();
+				String pathNode = v.getPathNode();
+				if (enable && StringUtils.isNotBlank(pathNode)) {
+					PathNodeDataConsumer pathNodeDataConsumer = applicationContext.getBean(k, PathNodeDataConsumer.class);
+					Arrays.stream(pathNode.split(",", -1)).forEach(node -> {
+						try {
+							String nodePath = node.startsWith("/") ? node : "/" + node;
+							//配置节点的监听类
+							TreeCache treeCache = new TreeCache(curatorFramework, nodePath);
+							treeCache.getListenable().addListener(new ZkPathTreeCacheListenerListener(pathNodeDataConsumer), zkAsyncExecutor);
+							treeCache.start();
+							log.debug("zk PathNodeDataConsumer Bean :{} listen the path:{}", pathNodeDataConsumer, node);
+						} catch (Exception e) {
+							log.error("exception, key:{}", k, e);
+						}
+					});
+				}
+			} catch (Exception e) {
+				log.error("绑定zk节点和监听bean出错,beanName:{}", k, e);
+			}
+		});
 		return Optional.empty();
 	}
 
