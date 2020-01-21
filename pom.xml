@@ -9,7 +9,7 @@
     <version>1.0-SNAPSHOT</version>
     <packaging>pom</packaging>
 
-    <description>The parent project of dubbo</description>
+    <description>The parent project of palest-ink</description>
     <url>https://github.com/palest-ink/palest-ink-starter-projects</url>
 
     <properties>
