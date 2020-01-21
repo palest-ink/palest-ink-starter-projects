@@ -14,9 +14,8 @@
     <properties>
         <spring.cloud.version>Hoxton.RELEASE</spring.cloud.version>
         <spring.cloud.alibaba.version>2.1.1.RELEASE</spring.cloud.alibaba.version>
-        <spring.boot.version>2.2.2.RELEASE</spring.boot.version>
-        <spring.version>5.2.2.RELEASE</spring.version>
-        <spring.test.version>5.2.2.RELEASE</spring.test.version>
+        <spring.boot.version>2.2.3.RELEASE</spring.boot.version>
+        <spring.version>5.2.3.RELEASE</spring.version>
 
         <javassist.version>3.26.0-GA</javassist.version>
         <httpcomponents.httpclient.version>4.5.11</httpcomponents.httpclient.version>
@@ -222,7 +221,7 @@
             <dependency>
                 <groupId>org.springframework</groupId>
                 <artifactId>spring-test</artifactId>
-                <version>${spring.test.version}</version>
+                <version>${spring.version}</version>
                 <scope>test</scope>
             </dependency>
         </dependencies>
