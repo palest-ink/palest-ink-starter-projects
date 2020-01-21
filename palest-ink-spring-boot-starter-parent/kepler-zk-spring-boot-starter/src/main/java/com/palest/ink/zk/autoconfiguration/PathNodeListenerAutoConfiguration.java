@@ -3,7 +3,6 @@ package com.palest.ink.zk.autoconfiguration;
 import com.palest.ink.zk.integration.listener.PathNodeDataConsumer;
 import com.palest.ink.zk.integration.listener.ZkPathTreeCacheListenerListener;
 import com.palest.ink.zk.properties.ZookeeperProperties;
-import com.palest.ink.zk.utils.Try;
 import lombok.AllArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.apache.commons.lang3.StringUtils;
@@ -64,14 +63,18 @@ public class PathNodeListenerAutoConfiguration {
 					String pathNode = v.getPathNode();
 					if (enable && StringUtils.isNotBlank(pathNode)) {
 						PathNodeDataConsumer pathNodeDataConsumer = applicationContext.getBean(k, PathNodeDataConsumer.class);
-						Arrays.stream(pathNode.split(",", -1)).forEach(Try.ofConsumer(node -> {
-							String nodePath = node.startsWith("/") ? node : "/" + node;
-							//配置节点的监听类
-							TreeCache treeCache = new TreeCache(curatorFramework, nodePath);
-							treeCache.getListenable().addListener(new ZkPathTreeCacheListenerListener(pathNodeDataConsumer), zkAsyncExecutor);
-							treeCache.start();
-							log.debug("zk PathNodeDataConsumer Bean :{} listen the path:{}", pathNodeDataConsumer, node);
-						}));
+						Arrays.stream(pathNode.split(",", -1)).forEach(node -> {
+							try {
+								String nodePath = node.startsWith("/") ? node : "/" + node;
+								//配置节点的监听类
+								TreeCache treeCache = new TreeCache(curatorFramework, nodePath);
+								treeCache.getListenable().addListener(new ZkPathTreeCacheListenerListener(pathNodeDataConsumer), zkAsyncExecutor);
+								treeCache.start();
+								log.debug("zk PathNodeDataConsumer Bean :{} listen the path:{}", pathNodeDataConsumer, node);
+							} catch (Exception e) {
+								log.error("exception, key:{}", k, e);
+							}
+						});
 					}
 				} catch (Exception e) {
 					log.error("绑定zk节点和监听bean出错,beanName:{}", k, e);

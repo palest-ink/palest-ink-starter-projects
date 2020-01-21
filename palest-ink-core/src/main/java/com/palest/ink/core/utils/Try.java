@@ -20,48 +20,29 @@ import java.util.function.Supplier;
 @UtilityClass
 public class Try {
 
-	/**
-	 * 的消费者
-	 *
-	 * @param action 行动
-	 * @return {@link Consumer<T>}
-	 */
 	public static <T> Consumer<T> ofConsumer(UncheckedConsumer<T> action) {
 		Objects.requireNonNull(action);
 		return t -> {
 			try {
 				action.accept(t);
 			} catch (Exception ex) {
-				log.error("ex ====> {}", ex);
+				log.error("exception happened", ex);
 			}
 		};
 	}
 
-	/**
-	 * 的供应商
-	 *
-	 * @param supplier 供应商
-	 * @param defaultR defaultR
-	 * @return {@link Supplier<T>}
-	 */
 	public static <T> Supplier<T> ofSupplier(UncheckedSupplier<T> supplier, T defaultR) {
 		Objects.requireNonNull(supplier);
 		return () -> {
 			try {
 				return supplier.get();
 			} catch (Exception ex) {
-				log.error("ex ====> {}", ex);
+				log.error("exception happened", ex);
 				return defaultR;
 			}
 		};
 	}
 
-	/**
-	 * 的函数
-	 *
-	 * @param mapper 映射器
-	 * @return {@link Function<T, R>}
-	 */
 	public static <T, R> Function<T, R> ofFunction(UncheckedFunction<T, R> mapper) {
 		Objects.requireNonNull(mapper);
 		return t -> {
@@ -73,20 +54,13 @@ public class Try {
 		};
 	}
 
-	/**
-	 * 的函数
-	 *
-	 * @param mapper   映射器
-	 * @param defaultR defaultR
-	 * @return {@link Function<T, R>}
-	 */
 	public static <T, R> Function<T, R> ofFunction(UncheckedFunction<T, R> mapper, R defaultR) {
 		Objects.requireNonNull(mapper);
 		return t -> {
 			try {
 				return mapper.apply(t);
 			} catch (Exception ex) {
-				log.error("ex ====> {}", ex);
+				log.error("exception happened", ex);
 				return defaultR;
 			}
 		};
