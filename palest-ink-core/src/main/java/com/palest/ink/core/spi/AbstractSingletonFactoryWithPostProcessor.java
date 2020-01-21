@@ -22,6 +22,12 @@ public abstract class AbstractSingletonFactoryWithPostProcessor<K, V> extends Ab
 
 	protected Environment environment;
 
+	/**
+	 * 设置应用程序上下文
+	 *
+	 * @param applicationContext 应用程序上下文
+	 * @throws BeansException 豆子例外
+	 */
 	@Override
 	public void setApplicationContext(ApplicationContext applicationContext) throws BeansException {
 		this.applicationContext = applicationContext;
@@ -30,6 +36,11 @@ public abstract class AbstractSingletonFactoryWithPostProcessor<K, V> extends Ab
 		postProcessor();
 	}
 
+	/**
+	 * 设置环境
+	 *
+	 * @param environment 环境
+	 */
 	@Override
 	public void setEnvironment(Environment environment) {
 		this.environment = environment;

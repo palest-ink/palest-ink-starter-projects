@@ -76,11 +76,21 @@ public abstract class AbstractSingletonFactory<K, V> implements SingletonFactory
 		return Collections.unmodifiableMap(factory);
 	}
 
+	/**
+	 * 把所有的钥匙
+	 *
+	 * @return {@link Set<K>}
+	 */
 	@Override
 	public Set<K> getAllKeys() {
 		return Collections.unmodifiableSet(factory.keySet());
 	}
 
+	/**
+	 * 得到所有的值
+	 *
+	 * @return {@link Collection<V>}
+	 */
 	@Override
 	public Collection<V> getAllValues() {
 		return Collections.unmodifiableCollection(factory.values());
