@@ -3,6 +3,7 @@
          xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
+
     <groupId>palest.ink</groupId>
     <artifactId>palest-ink-starter-projects</artifactId>
     <version>1.0.0-SNAPSHOT</version>
@@ -16,12 +17,10 @@
         <java.encoding>UTF-8</java.encoding>
         <java.version>1.8</java.version>
         <project.build.sourceEncoding>${java.encoding}</project.build.sourceEncoding>
-
         <!-- dependencies-->
         <junit.jupiter.version>5.4.0</junit.jupiter.version>
         <cglib.version>2.2</cglib.version>
         <lombok.version>1.18.10</lombok.version>
-
         <!-- plugins -->
         <maven.source.version>3.0.1</maven.source.version>
         <maven.compiler.version>3.8.1</maven.compiler.version>
@@ -33,9 +32,11 @@
     </properties>
 
     <modules>
-        <module>palest-ink-dependencies-bom</module>
         <module>palest-ink-core</module>
         <module>palest-ink-spring-boot-starter-parent</module>
+        <module>palest-ink-dependencies-bom</module>
+        <!-- 数据脱敏基础包 -->
+        <module>palest-ink-datesecure</module>
     </modules>
 
     <dependencies>
