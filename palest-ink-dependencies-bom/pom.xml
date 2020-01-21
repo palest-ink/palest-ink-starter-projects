@@ -29,8 +29,10 @@
         <curator.test.version>4.2.0</curator.test.version>
         <jedis.version>3.2.0</jedis.version>
         <servlet-api.version>4.0.1</servlet-api.version>
-        <hibernate.validator.version>6.1.1.Final</hibernate.validator.version>
-        <commons.lang3.version>3.9</commons.lang3.version>
+        <hibernate-validator.version>6.1.1.Final</hibernate-validator.version>
+        <commons-lang3.version>3.9</commons-lang3.version>
+        <commons-io.version>2.6</commons-io.version>
+        <commons-collection.version>4.4</commons-collection.version>
 
         <slf4j.version>1.7.25</slf4j.version>
         <jcl.version>1.2</jcl.version>
@@ -71,6 +73,18 @@
                 <version>${spring.version}</version>
                 <type>pom</type>
                 <scope>import</scope>
+            </dependency>
+
+            <dependency>
+                <groupId>org.apache.commons</groupId>
+                <artifactId>commons-collections4</artifactId>
+                <version>${commons-collection.version}</version>
+            </dependency>
+
+            <dependency>
+                <groupId>commons-io</groupId>
+                <artifactId>commons-io</artifactId>
+                <version>${commons-io.version}</version>
             </dependency>
 
             <dependency>
