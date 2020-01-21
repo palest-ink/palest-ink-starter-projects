@@ -4,9 +4,9 @@
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
 
-    <groupId>palest-ink</groupId>
+    <groupId>palest.ink</groupId>
     <artifactId>palest-ink-starter-projects</artifactId>
-    <version>1.0-SNAPSHOT</version>
+    <version>1.0.0-SNAPSHOT</version>
     <packaging>pom</packaging>
 
     <description>The parent project of palest-ink</description>
@@ -33,7 +33,9 @@
     </properties>
 
     <modules>
+        <module>palest-ink-core</module>
         <module>palest-ink-spring-boot-starter-parent</module>
+        <module>palest-ink-dependencies-bom</module>
     </modules>
 
     <dependencies>
@@ -61,6 +63,15 @@
 
     <dependencyManagement>
 
+        <dependencies>
+            <dependency>
+                <groupId>palest.ink</groupId>
+                <artifactId>palest-ink-dependencies-bom</artifactId>
+                <version>1.0.0-SNAPSHOT</version>
+                <type>pom</type>
+                <scope>import</scope>
+            </dependency>
+        </dependencies>
     </dependencyManagement>
 
     <profiles>
