@@ -1,10 +1,3 @@
-/*
- * Copyright 2017 Zhongan.com All right reserved. This software is the
- * confidential and proprietary information of Zhongan.com ("Confidential
- * Information"). You shall not disclose such Confidential Information and shall
- * use it only in accordance with the terms of the license agreement you entered
- * into with Zhongan.com.
- */
 package com.palest.ink.secure.common.enums;
 
 import lombok.AllArgsConstructor;
@@ -42,7 +35,7 @@ public enum SensitiveRulesEnum {
     /** 手机号(如：133******78) */
     PHONE_NO("PHONE_NO", "手机号", "个人信息", RuleEnum.RULE_PHONE_NO),
 
-    /** 邮箱(如：hy***o@zhongan.com) */
+    /** 邮箱 */
     EMAIL("EMAIL", "邮箱", "个人信息", RuleEnum.RULE_EMAIL),
 
     /** Hash值脱敏,规则： MD5 */

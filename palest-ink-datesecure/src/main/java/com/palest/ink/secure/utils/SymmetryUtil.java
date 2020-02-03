@@ -1,18 +1,11 @@
-/*
- * Copyright 2017 Zhongan.com All right reserved. This software is the
- * confidential and proprietary information of Zhongan.com ("Confidential
- * Information"). You shall not disclose such Confidential Information and shall
- * use it only in accordance with the terms of the license agreement you entered
- * into with Zhongan.com.
- */
+
 package com.palest.ink.secure.utils;
 
-import java.io.UnsupportedEncodingException;
-
+import lombok.extern.slf4j.Slf4j;
 import org.apache.commons.codec.binary.Base64;
 import org.apache.commons.lang3.StringUtils;
 
-import lombok.extern.slf4j.Slf4j;
+import java.io.UnsupportedEncodingException;
 
 /**
  * 类SymmetryUtil.java的实现描述：数据加解密算法工具类
