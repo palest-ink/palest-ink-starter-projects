@@ -1,0 +1,14 @@
+palest:
+  zk:
+    serverLists: 127.0.0.1:2181
+    namespace: kepler
+    pathNodeListener:
+      productConfigConsumer:
+        pathNode: "/application/handler"
+      productConfigConsumer2:
+        pathNode: "product/51YND/product_config"
+      routerConsumer:
+        pathNode: "/product/51YND/router"
+
+server:
+  port: 9999
