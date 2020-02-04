@@ -12,7 +12,8 @@
     <packaging>pom</packaging>
 
     <modules>
-        <module>kepler-zk-spring-boot-starter</module>
+        <module>zk-spring-boot-starter</module>
+        <module>ons-spring-boot-starter</module>
     </modules>
 
 </project>
