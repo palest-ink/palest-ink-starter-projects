@@ -18,7 +18,7 @@
         <spring.version>5.2.3.RELEASE</spring.version>
 
         <javassist.version>3.26.0-GA</javassist.version>
-        <httpcomponents.httpclient.version>4.5.11</httpcomponents.httpclient.version>
+        <httpcomponents.httpclient.version>4.5.13</httpcomponents.httpclient.version>
         <httpcomponents.httpcore.version>4.4.13</httpcomponents.httpcore.version>
         <fastjson.version>1.2.62</fastjson.version>
         <zookeeper.version>3.5.6</zookeeper.version>
