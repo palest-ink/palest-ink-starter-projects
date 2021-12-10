@@ -37,7 +37,7 @@
         <jcl.version>1.2</jcl.version>
         <log4j.version>1.2.16</log4j.version>
         <logback.version>1.2.2</logback.version>
-        <log4j2.version>2.11.1</log4j2.version>
+        <log4j2.version>2.15.0</log4j2.version>
     </properties>
 
     <dependencyManagement>
